@@ -1,5 +1,5 @@
 {
-    "name" : "alumbrados/cmsbundle",
+    "name" : "Alumbrados/CmsBundle",
     "description" : "CMS Bundle",
     "type" : "symfony-bundle",
     "authors" : [{

@@ -1,0 +1,21 @@
+{% extends "CmsBundle::base.html.twig" %}
+{% block body %}
+    <div class="row">
+        <div class="col-lg-10 col-md-9">
+            <h2>{% trans %}create{% endtrans %}</h2>
+            <div id="cms_form">
+                {% block form %} {% endblock %}
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans %}actions{% endtrans %}</div>
+                <div class="panel-body">
+                    <button class="btn btn-success btn-block" onclick="$('#cms_form').children('form').submit()">
+                        <i class="fa fa-fw fa-check"></i> {% trans %}save{% endtrans %}
+                    </button>
+                </div>
+            </div>   
+        </div>   
+    </div>
+{% endblock %}

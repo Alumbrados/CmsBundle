@@ -1,0 +1,95 @@
+{% extends "CmsBundle::base.html.twig" %}
+
+{% macro create_table_row(item, entity_name, id_property, name_property, allow_update, allow_delete, sortable, depth) %}
+    {% import _self as document %}
+    <tr>
+        {% if sortable %}
+            <td class="icon"><i class="fa fa-fw fa-sort"></i></td>
+        {% endif %}
+        <td>{% for i in 0..depth %}{% if i > 0 %}<i class="fa fa-fw"></i>{% endif %}{% endfor %}<i class="fa fa-fw fa-{% if entity_name == 'menu' %}folder{% else %}file-text-o{% endif %}"></i> {{ attribute(item, name_property) }}</td>
+        {% if allow_update %}
+            <td class="icon">
+                <a href="{{ path('cms_' ~ entity_name ~ '_update', { 'id': attribute(item, id_property) }) }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-pencil"></i></a>
+            </td>
+        {% endif %}
+        {% if allow_delete %}
+            <td class="icon">
+                <a href="{{ path('cms_' ~ entity_name ~ '_delete', { 'id': attribute(item, id_property) }) }}" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i></a>
+            </td>
+        {% endif %}
+    </tr>
+    {% if item.children %}
+        {{ document.create_table(item, entity_name, id_property, name_property, allow_update, allow_delete, sortable, depth) }}                           
+    {% endif %}    
+{% endmacro %}
+
+{% macro create_table(list, entity_name, id_property, name_property, allow_update, allow_delete, sortable, depth) %}
+    {% set depth = depth + 1 %}
+    {% import _self as document %}
+    {% if list.children %}
+        {% for item in list.children %}
+            {% if item is instanceof('Symfony\\Cmf\\Bundle\\MenuBundle\\Doctrine\\Phpcr\\Menu') %}
+                {{ document.create_table_row(item, 'menu', id_property, name_property, allow_update, allow_delete, sortable, depth) }}
+            {% else %}
+                {{ document.create_table_row(item, 'menu_item', id_property, name_property, allow_update, allow_delete, sortable, depth) }}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% import _self as document %}
+{% block body %}
+    <div class="row">
+        <div class="col-lg-10 col-md-9">
+            <h2>{% trans %}overview{% endtrans %}</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        {% if sortable %}
+                            <th class="icon">
+                                <i class="fa fa-fw fa-sort"></i>
+                            </th>
+                        {% endif %}
+                        <th>
+                            {% trans %}name{% endtrans %}
+                        </th>
+                        {% if allow_update %}
+                            <th class="icon">
+                                <i class="fa fa-fw fa-pencil"></i>
+                            </th>  
+                        {% endif %}
+                        {% if allow_delete %}
+                            <th class="icon">
+                                <i class="fa fa-fw fa-trash"></i>
+                            </th>        
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in list.children %}
+                        {{ document.create_table_row(item, entity_name, id_property, name_property, allow_update, allow_delete, sortable, 0) }}
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% if pager is defined %}
+                {{ pagerfanta(pager, 'twitter_bootstrap3_translated') }}
+            {% endif %}
+        </div>
+        <div class="col-lg-2 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans %}actions{% endtrans %}</div>
+                <div class="panel-body">
+                    <a class="btn btn-primary btn-block" href="{{ path('cms_menu_create') }}">
+                        <i class="fa fa-fw fa-plus"></i> {% trans %}create{% endtrans %} {% trans %}menu{% endtrans %}
+                    </a>                    
+                    <a class="btn btn-primary btn-block" href="{{ path('cms_sub_menu_create') }}">
+                        <i class="fa fa-fw fa-plus"></i> {% trans %}create{% endtrans %} {% trans %}sub_menu{% endtrans %}
+                    </a>
+                    <a class="btn btn-primary btn-block" href="{{ path('cms_menu_item_create') }}">
+                        <i class="fa fa-fw fa-plus"></i> {% trans %}create{% endtrans %} {% trans %}menu_item{% endtrans %}
+                    </a>                    
+                </div>
+            </div>
+        </div>           
+    </div>
+{% endblock %}

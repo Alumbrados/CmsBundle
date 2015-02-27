@@ -1,0 +1,25 @@
+<div class="insert-label">
+    <div class="content">
+        <div class="qr">
+            {% set url = 'http://www.tuingoedfoltz.nl/catalogus/' ~ entity.id ~ '/' ~ entity.slug %}
+            <img src="{{ qrcode_data_uri(url, size=300, padding=0, extension='png') }}">            
+        </div>
+        <div class="data">
+            <span class="genus">{{ entity.genus }}</span>
+            <span class="species">{{ entity.speciesTitle }}</span>
+            <span class="summary">{{ entity.summary }}</span>
+            <div class="specs">
+                <span class="spec">
+                    Kleur
+                    {{ entity.colorName }}
+                </span>
+                <span class="spec">Bloeitijd</span>
+                <span class="spec">Hoogte</span>
+                <span class="spec">Standplaats</span>
+                <span class="spec">Bodem</span>
+                <span class="spec">Winterhardheid</span>
+            </div>
+            <span class="price">{{ entity.priceP9|number_format_currency('EUR') }}</span>
+        </div>
+    </div>
+</div>

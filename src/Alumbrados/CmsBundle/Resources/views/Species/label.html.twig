@@ -1,0 +1,6 @@
+{% extends 'CmsBundle::print.html.twig' %}    
+{% block labels %}
+    {% for entity in entities %}
+        {% include 'CmsBundle:Species/Label:insertLabel.html.twig' %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,59 @@
+{{ form_start(form, { 'style': 'horizontal' }) }}
+    <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#taxonomy" aria-controls="taxonomy" role="tab" data-toggle="tab">{% trans %}taxonomy{% endtrans %}</a></li>
+            <li role="presentation"><a href="#webshop" aria-controls="profile" role="tab" data-toggle="tab">{% trans %}webshop{% endtrans %}</a></li>
+            <li role="presentation"><a href="#properties" aria-controls="profile" role="tab" data-toggle="tab">{% trans %}properties{% endtrans %}</a></li>
+            <li role="presentation"><a href="#presentation" aria-controls="messages" role="tab" data-toggle="tab">{% trans %}presentation{% endtrans %}</a></li>
+        </ul>
+        <br>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="taxonomy">
+                {{ form_row(form.genus) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.variety) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.varietySynonym) }}
+                {{ form_row(form.publish) }}
+                {{ form_row(form.collectionFrom) }}
+                {{ form_row(form.collectionTill) }}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="webshop">
+                <div class="row">
+                    <div class="col-md-6">                
+                        {{ form_row(form.priceP9) }}
+                        {{ form_row(form.priceP11) }}
+                        {{ form_row(form.priceC) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.stockP9) }}
+                        {{ form_row(form.stockP11) }}
+                        {{ form_row(form.stockC) }}
+                    </div>
+                </div>
+            </div>                    
+            <div role="tabpanel" class="tab-pane" id="properties">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.colors) }}
+                        {{ form_row(form.colorName) }}
+                        {{ form_row(form.height) }}
+                        {{ form_row(form.soils) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.months) }}
+                        {{ form_row(form.shadow) }}
+                        {{ form_row(form.hardiness) }}
+                        {{ form_row(form.amountM2) }}
+                        {{ form_row(form.origin) }}      
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="presentation">
+                {{ form_row(form.images) }}
+                {{ form_row(form.summary) }}
+                {{ form_row(form.content) }}
+            </div>
+        </div>
+    </div>            
+    {{ form_end(form) }}

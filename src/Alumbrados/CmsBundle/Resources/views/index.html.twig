@@ -1,0 +1,32 @@
+{% extends "CmsBundle::base.html.twig" %}
+{% block body %}
+    <div class="row">
+        <div class="col-lg-10 col-md-9">
+            <div class="pull-right">
+                {% if search is defined %}
+                    {{ form(search, {'style': 'inline' }) }}
+                {% endif %}  
+            </div>
+            <h2>{% trans %}overview{% endtrans %}</h2>
+            {% block list %} {% endblock %}
+        </div>
+        <div class="col-lg-2 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans %}actions{% endtrans %}</div>
+                <div class="panel-body">
+                    <a class="btn btn-primary btn-block" href="{{ path('cms_' ~ entity_name ~ '_create') }}">
+                        <i class="fa fa-fw fa-plus"></i> {% trans %}create{% endtrans %}
+                    </a>
+                </div>
+            </div>
+            {% if filter is defined %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Filters</div>
+                    <div class="panel-body">
+                        {{ form(filter) }}
+                    </div>
+                </div>  
+            {% endif %}
+        </div>           
+    </div>
+{% endblock %}

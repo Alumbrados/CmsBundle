@@ -1,0 +1,71 @@
+body {
+    width: 109mm;
+    color: #000;
+}
+.insert-label {
+    width: 109mm;
+    height: 30mm;
+    clear: left;
+    display:block;
+    overflow: hidden;
+    page-break-after:always;    
+    background: url('/foltz/label.png') no-repeat top left;
+    background-size: 109mm 30mm;
+    background-position-x: -1px;
+    font-size: 12px;
+}
+.insert-label > .content {
+    margin-top: 3mm;
+    margin-bottom: 3mm;
+    margin-left: 2mm;
+    margin-right: 24mm;
+    height: 24mm;
+    outline: 1px solid red;
+    position: relative;
+}
+.insert-label > .content > .qr {
+    position: absolute;
+    width: 24mm;
+    height: 24mm;
+    outline: 1px solid yellow;
+}
+.insert-label > .content > .qr > img {
+    width: 100%;
+    height: 100%;
+    padding: 5mm;
+}
+.insert-label > .content > .data {
+    position: absolute;
+    right: 0;
+    left: 26mm;
+    outline: 1px solid green;
+    line-height: 14px;
+}
+
+
+.insert-label > .content .specs {
+    font-size: 8px;
+    line-height: 12px;
+    display: block;
+    margin: 3px 0;
+}
+
+.insert-label > .content .spec {
+    font-size: 6px;
+    width: 32%;
+    display: inline-block;
+}
+
+.insert-label > .content .price {
+    display: block;
+}
+
+
+.genus {
+    display: block;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.species {
+    display: block;
+}

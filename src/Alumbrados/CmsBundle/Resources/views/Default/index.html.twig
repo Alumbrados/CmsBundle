@@ -1,0 +1,94 @@
+{% extends "CmsBundle::index.html.twig" %}
+{% block list %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                {% if sortable %}
+                    <th class="icon">
+                        <i class="fa fa-fw fa-sort"></i>
+                    </th>
+                {% endif %}
+                {% if routable %}
+                    <th class="icon">
+                        <i class="fa fa-fw fa-eye"></i>
+                    </th>
+                {% endif %}    
+                {% if fields is defined %}
+                    {% for field in fields %}
+                        <th{% if field.class %} class="{{ field.class }}"{% endif %}>
+                            {{ field.label|trans }}
+                        </th>                        
+                    {% endfor %}
+                {% else %}
+                    <th>
+                        {% trans %}name{% endtrans %}
+                    </th>
+                {% endif %}
+                {% if allow_update %}
+                    <th class="icon">
+                        <i class="fa fa-fw fa-pencil"></i>
+                    </th>  
+                {% endif %}
+                {% if allow_delete %}
+                    <th class="icon">
+                        <i class="fa fa-fw fa-trash"></i>
+                    </th>        
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+                <tr>
+                    {% if sortable %}
+                        <td>
+                            <i class="fa fa-fw fa-sort"></i>
+                        </td>
+                    {% endif %}
+                    {% if routable %}
+                        <td>
+                            <a href="{{ path(item) }}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-fw fa-eye"></i></a>
+                        </td>
+                    {% endif %}   
+                    {% if fields is defined %}
+                        {% for field in fields %}
+                            <td{% if field.class %} class="{{ field.class }}"{% endif %}>
+                                {% if field.type is defined %}
+                                    {% if field.type == 'boolean' %}
+                                        {% if attribute(item, field.field) == true %}
+                                            <i class="fa fa-fw fa-check-square-o"></i>
+                                        {% else %}
+                                            <i class="fa fa-fw fa-square-o"></i>
+                                        {% endif %}
+                                    {% elseif field.type == 'money' %}
+                                        {% if attribute(item, field.field) > 0 %}
+                                            {{ attribute(item, field.field)|number_format_currency('EUR') }}
+                                        {% endif %}
+                                    {% else %}
+                                        UNKNOWN TYPE
+                                    {% endif %}
+                                {% else %}
+                                    {{ attribute(item, field.field) }}
+                                {% endif %}
+                            </td>                        
+                        {% endfor %}
+                    {% else %}                    
+                        <td>{{ attribute(item, name_property) }}</td>
+                    {% endif %}
+                    {% if allow_update %}
+                        <td>
+                            <a href="{{ path('cms_' ~ entity_name ~ '_update', { 'id': attribute(item, id_property), 'filter': app.request.query.get('filter'), 'page': app.request.query.get('page') }) }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-pencil"></i></a>
+                        </td>
+                    {% endif %}
+                    {% if allow_delete %}
+                        <td>
+                            <a href="{{ path('cms_' ~ entity_name ~ '_delete', { 'id': attribute(item, id_property), 'filter': app.request.query.get('filter'), 'page': app.request.query.get('page') }) }}" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i></a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if pager is defined %}
+        {{ pagerfanta(pager, 'twitter_bootstrap3_translated') }}
+    {% endif %}
+{% endblock %}

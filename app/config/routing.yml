@@ -1,0 +1,8 @@
+alumbrados_cms:
+    resource: "@AlumbradosCmsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

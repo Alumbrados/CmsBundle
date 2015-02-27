@@ -1,0 +1,32 @@
+{
+    "name" : "alumbrados/cmsbundle",
+    "description" : "CMS Bundle",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Martijn Hartlief",
+        "email" : "martijn@alumbrados.nl"
+    }],
+    "keywords" : [
+        "CMS",
+        "ORM",
+        "ODM"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Alumbrados\\CmsBundle" : ""
+        }
+    },
+    "target-dir" : "Alumbrados/CmsBundle",
+    "repositories" : [{
+    }],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "0.1-dev"
+        }
+    }
+}

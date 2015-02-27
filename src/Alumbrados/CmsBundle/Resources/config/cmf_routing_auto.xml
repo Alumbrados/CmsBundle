@@ -1,0 +1,34 @@
+<auto-mapping xmlns="http://cmf.symfony.com/schema/routing_auto">
+
+    <mapping class="Alumbrados\CmsBundle\Document\Post"
+        extend="Alumbrados\CmsBundle\Document\Page"
+        uri-schema="/nieuws/{date}/{title}">
+
+        <token-provider token="date" name="content_datetime">
+            <option name="method">getDate</option>
+        </token-provider>
+    </mapping>
+    
+    <mapping class="Alumbrados\CmsBundle\Document\Event"
+        extend="Alumbrados\CmsBundle\Document\Page"
+        uri-schema="/agenda/{title}">
+    </mapping>   
+    
+    <mapping class="Alumbrados\CmsBundle\Entity\Species"
+        uri-schema="/catalogus/{id}/{slug}">
+        <token-provider token="id" name="content_method">
+            <option name="method">getId</option>
+        </token-provider>        
+        <token-provider token="slug" name="content_method">
+            <option name="method">getSlug</option>
+        </token-provider>        
+    </mapping>      
+    
+    <mapping class="Alumbrados\CmsBundle\Document\Page"
+        uri-schema="/{title}">
+
+        <token-provider token="title" name="content_method">
+            <option name="method">getTitle</option>
+        </token-provider>
+    </mapping>
+</auto-mapping>

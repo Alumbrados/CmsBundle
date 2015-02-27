@@ -1,0 +1,59 @@
+# Entities
+page: Pagina
+pages: Pagina's
+species: Soorten
+post: Bericht
+posts: Berichten
+event: Evenement
+events: Evenementen
+menu: Menu
+menus: Menu's
+user: Gebruiker
+users: Gebruikers
+role: Rol
+roles: Rollen
+order: Order
+orders: Orders
+customer: Klant
+customers: Klanten
+setting: Instelling
+settings: Instellingen
+
+# Actions
+save: Opslaan
+create: Nieuw
+add: Toevoegen
+update: Bewerk
+overview: Overzicht
+logout: Uitloggen
+search: Zoeken
+
+# Views
+actions: Acties
+dashboard: Dashboard
+modules: Modules
+home: Home
+profile: Profiel
+
+# Fields
+publish: Publiceren
+title: Titel
+name: Naam
+page_title: Pagina titel
+summary: Samenvatting
+image: Afbeelding
+description: Omschrijving
+content: Inhoud
+meta_title: SEO titel
+meta_keywords: SEO sleutelwoorden
+meta_description: SEO omschrijving
+menu_title: Menu titel
+date: Datum
+date_from: Datum vanaf
+date_till: Datum tot
+enabled: Actief
+
+# Roles
+ROLE_USER: Gebruiker
+ROLE_ADMIN: Admin 
+

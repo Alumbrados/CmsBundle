@@ -1,0 +1,78 @@
+td.icon, th.icon {
+    width: 16px;
+}
+td.text, th.text {
+    width: 100px;
+}
+td.number, 
+th.number,
+td.boolean, 
+th.boolean {
+    width: 16px;
+    text-align: right;
+}
+td.boolean, 
+th.boolean {
+    text-align: center;
+}
+.navbar .navbar-brand,
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+    padding: 20px 25px;
+    height: 63px;
+    background-color: #d9534f;
+    margin-bottom: -1px;
+}
+body {
+    padding-bottom: 30px;
+}
+.btn-select { 
+    color: #3e3f3a; 
+    background-color: #FFFFFF; 
+    border: 1px solid #dfd7ca;
+    border-radius: 4px;
+    text-transform: none;
+    font-size: 14px;
+    font-weight: normal;
+} 
+ 
+.btn-select:hover, 
+.btn-select:focus, 
+.btn-select:active, 
+.btn-select.active, 
+.open .dropdown-toggle.btn-select { 
+    color: #3e3f3a; 
+    background-color: #FFFFFF; 
+    border-color: #DFD7CA; 
+} 
+ 
+.btn-select:active, 
+.btn-select.active, 
+.open .dropdown-toggle.btn-select { 
+    background-image: none; 
+} 
+ 
+.btn-select.disabled, 
+.btn-select[disabled], 
+fieldset[disabled] .btn-select, 
+.btn-select.disabled:hover, 
+.btn-select[disabled]:hover, 
+fieldset[disabled] .btn-select:hover, 
+.btn-select.disabled:focus, 
+.btn-select[disabled]:focus, 
+fieldset[disabled] .btn-select:focus, 
+.btn-select.disabled:active, 
+.btn-select[disabled]:active, 
+fieldset[disabled] .btn-select:active, 
+.btn-select.disabled.active, 
+.btn-select[disabled].active, 
+fieldset[disabled] .btn-select.active { 
+    background-color: #FFFFFF; 
+    border-color: #DFD7CA; 
+} 
+ 
+.btn-select .badge { 
+    color: #FFFFFF; 
+    background-color: #3e3f3a; 
+}
+
